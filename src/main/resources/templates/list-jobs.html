@@ -11,6 +11,42 @@
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <!-- TODO #1 - Use a loop to display job results in a table. -->
+    <table class="job-listing" th:each="job : ${jobs}">
+        <tr>
+            <td>ID</td>
+                <td><a th:href="@{'/view/' + ${job.id}}" th:text="${job.id}"></a></td>
+<!--                </p>-->
+<!--            </td>    -->
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td th:text="${job.name}"></td>
+<!--            <td><p th:text="${job.name}"></p>-->
+<!--            </td>-->
+        </tr>
+        <tr>
+            <td>Employer</td>
+            <td> <a th:href="@{'/employers/' + ${job.employer.id}}" th:text="${job.employer.toString()}"></a>
+
+            </td>
+        </tr>
+        <tr>
+            <td>Location</td>
+                    <td><a th:href="@{'/location/view/' + ${job.location.id}}" th:text="${job.location.toString()}"></a></td>
+        </tr>
+        <tr>
+            <td>Position Type</td>
+                    <td><a th:href="@{'/positionType/view/' + ${job.positionType.id}}" th:text="${job.positionType.toString()}"></a></td>
+        </tr>
+        <tr>
+            <td>Skills</td>
+            <td><a th:each="skill :${job.coreCompetency}" th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.toString}"></a></td>
+<!--                        <li>-->
+<!--                            <a th:href="@{'/skills/view' + ${skill.id}}" th:text="${skill.toString}"></a>-->
+<!--                        </li>-->
+
+        </tr>
+    </table>
 
 </div>
 
