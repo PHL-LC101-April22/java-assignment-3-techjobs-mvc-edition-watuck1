@@ -37,6 +37,57 @@
     <hr />
 
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
+    <table class="job-listing" th:each="job : ${jobs}">
+        <tr >
+            <td>
+                <p>
+                    ID:
+                    <a th:href="@{'/view/' + ${job.id}}" th:text="${job.id}"></a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p th:text="${'Name: '  + job.name}"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    Employer:
+                    <a th:href="@{'/employers/view' + ${job.employer.id}}" th:text="${job.employer.toString()}"></a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    Location:
+                    <a th:href="@{'/location/view' + ${job.location.id}}" th:text="${job.location.toString()}"></a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    Position Type:
+                    <a th:href="@{'/positionType/view' + ${job.positionType.id}}" th:text="${job.positionType.toString()}"></a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    Skills:
+                    <a th:each="skill :${job.coreCompetency}" th:href="@{'/skills/view' + ${skill.id}}" th:text="${skill.toString}">
+                        <!--                        <li>-->
+                        <!--                            <a th:href="@{'/skills/view' + ${skill.id}}" th:text="${skill.toString}"></a>-->
+                        <!--                        </li>-->
+                    </a>
+                </p>
+            </td>
+        </tr>
+    </table>
 
 </div>
 
